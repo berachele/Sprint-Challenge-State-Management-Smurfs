@@ -36,9 +36,9 @@ const SmurfVillage = props => {
             return(<p>Name: {show.name}<br/> Age: {show.age}<br/> Height: {show.height}</p>)
             })}</p>
 
-            <label htmlFor="addName"><input id="addName" name="addName" placeholder="Name" value={oneSmurf} onChange={handleChanges} /></label> &nbsp;
-            <label htmlFor="addAge"><input id="addAge" name="addAge" placeholder="Age" value={oneSmurf} onChange={handleChanges} /></label> &nbsp;
-            <label htmlFor="addHeight"><input id="addHeight" name="addHeight" placeholder="Height" value={oneSmurf} onChange={handleChanges} /></label> &nbsp;
+            <label htmlFor="addName"><input id="addName" name="addName" placeholder="Name" value={oneSmurf.name} onChange={handleChanges} /></label> &nbsp;
+            <label htmlFor="addAge"><input id="addAge" name="addAge" placeholder="Age" value={oneSmurf.age} onChange={handleChanges} /></label> &nbsp;
+            <label htmlFor="addHeight"><input id="addHeight" name="addHeight" placeholder="Height" value={oneSmurf.height} onChange={handleChanges} /></label> &nbsp;
             <button type="submit" onClick={addSmurfPerson} >Add Smurf!</button>
 
             {props.error && <p className="error">{props.error}</p>}
