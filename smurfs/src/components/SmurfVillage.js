@@ -17,18 +17,12 @@ const SmurfVillage = props => {
 
     //handleChanges for inputs here
     const handleChanges= event => {
-        setSmurf({[event.target.name]: event.target.value})
+        setSmurf({...oneSmurf, [event.target.name]: event.target.value})
     }
-    const [post, setPost] = useState([])
-
-    const [newSmurf, setNewSmurf] = useState({
-        name: "",
-        age:"",
-        height:""
-    })
+    
     //addSmurf here --> links with action
     const addSmurfPerson = () => {
-        props.addSmurf(newSmurf, setNewSmurf, post, setPost)
+        props.addSmurf(oneSmurf)
     }
 
     // console.log("PROPS.SMURF", props.smurf)
@@ -37,16 +31,16 @@ const SmurfVillage = props => {
             <header>
                 <h1>Welcome to our Smurf Village!</h1>
             </header>
-            <h2>Our village is lonely, let's add more Smurfs!</h2>
+            <h2>Our Village is lonely, let's add more Smurfs!</h2>
             {/* showing smurf data */}
             <p>{props.smurf && props.smurf.map(show=> {
                 // console.log("SHOWING VILLAGE", show)
             return(<p>Name: {show.name}<br/> Age: {show.age}<br/> Height: {show.height}</p>)
             })}</p>
 
-            <label htmlFor="addName"><input id="addName" name="addName" placeholder="Name" value={oneSmurf.name} onChange={handleChanges} /></label> &nbsp;
-            <label htmlFor="addAge"><input id="addAge" name="addAge" placeholder="Age" value={oneSmurf.age} onChange={handleChanges} /></label> &nbsp;
-            <label htmlFor="addHeight"><input id="addHeight" name="addHeight" placeholder="Height" value={oneSmurf.height} onChange={handleChanges} /></label> &nbsp;
+            <label htmlFor="name"><input id="name" name="name" placeholder="Name" value={oneSmurf.name} onChange={handleChanges} /></label> &nbsp;
+            <label htmlFor="age"><input id="age" name="age" placeholder="Age" value={oneSmurf.age} onChange={handleChanges} /></label> &nbsp;
+            <label htmlFor="height"><input id="height" name="height" placeholder="Height" value={oneSmurf.height} onChange={handleChanges} /></label> &nbsp;
             <button type="submit" onClick={addSmurfPerson} >Add Smurf!</button>
 
             {props.error && <p className="error">{props.error}</p>}
