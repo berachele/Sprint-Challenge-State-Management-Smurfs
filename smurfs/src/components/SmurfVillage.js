@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react"
 import {connect} from "react-redux"
-import {loadSmurf} from "../store/actions/smurfActions"
+import {loadSmurf, addSmurf} from "../store/actions/smurfActions"
 
 const SmurfVillage = props => {
 
@@ -14,13 +14,21 @@ const SmurfVillage = props => {
         age:"",
         height:""
     })
+
     //handleChanges for inputs here
     const handleChanges= event => {
-        setSmurf({...oneSmurf, [event.target.name]: event.target.value})
+        setSmurf({[event.target.name]: event.target.value})
     }
+    const [post, setPost] = useState([])
+
+    const [newSmurf, setNewSmurf] = useState({
+        name: "",
+        age:"",
+        height:""
+    })
     //addSmurf here --> links with action
     const addSmurfPerson = () => {
-        props.addSmurf()
+        props.addSmurf(newSmurf, setNewSmurf, post, setPost)
     }
 
     // console.log("PROPS.SMURF", props.smurf)
@@ -59,5 +67,5 @@ const mapStateToProps = state => {
 
 //eventually connect to actions
 export default connect(mapStateToProps, 
-    {loadSmurf}
+    {loadSmurf, addSmurf}
     )(SmurfVillage)

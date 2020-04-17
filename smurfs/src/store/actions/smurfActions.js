@@ -1,6 +1,7 @@
 //ACTIONS
 import axios from "axios"
 
+
 export const loadSmurf = () => dispatch => {
     dispatch({type: "LOAD_SMURF"})
     axios.get("http://localhost:3333/smurfs")
@@ -20,7 +21,7 @@ export const addSmurf = input => dispatch => {
     dispatch({type: "ADD_SMURF"})
     axios.post("http://localhost:3333/smurfs", input)
     .then(res => {
-        console.log("ADD SMURF RESP", res)
+        console.log("ADD SMURF RES", res)
     })
     .catch(err => {
         console.log("ADD SMURF ERROR", err)
